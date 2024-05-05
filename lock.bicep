@@ -21,3 +21,11 @@ resource storageContainer 'Microsoft.Storage/storageAccounts/blobServices/contai
     storageAccount
   ]
 }
+resource lock 'Microsoft.Authorization/locks@2016-09-01' = {
+  name: '${storageAccountName}-lock'
+  properties: {
+    level: 'ReadOnly'
+    notes: 'This lock prevents accidental deletion or modification of the storage account.'
+  }
+  scope: storageAccount
+}
