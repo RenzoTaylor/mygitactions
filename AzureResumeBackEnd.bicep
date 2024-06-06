@@ -1,5 +1,5 @@
 // Define parameters for the Cosmos DB account
-param accountName string = 'azureresume'
+param accountName string = 'azureresumetest133'
 param location string = resourceGroup().location
 param databaseName string = 'azureresumedatabase'
 param containerName string = 'counter'
