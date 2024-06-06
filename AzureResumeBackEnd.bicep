@@ -1,6 +1,6 @@
 // Define parameters for the Cosmos DB account
 param accountName string = 'azureresume'
-param location string = resourceGroup().westus
+param location string = resourceGroup().location
 param databaseName string = 'azureresumedatabase'
 param containerName string = 'counter'
 param partitionKeyPath string = '/id'
