@@ -65,4 +65,3 @@ resource cosmosDbContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/c
       }
     }
   }
-}
