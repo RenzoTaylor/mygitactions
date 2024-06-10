@@ -28,19 +28,20 @@ resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2021-06-15' = {
 
 // Define the SQL database within the Cosmos DB account
 resource cosmosDbDatabase 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2021-04-15' = {
-  parent: cosmosDbAccount
-  name: databaseName
+  name: '${accountName}/${databaseName}'
   properties: {
     resource: {
       id: databaseName
     }
   }
+  dependsOn: [
+    cosmosDbAccount
+  ]
 }
 
 // Define the container within the database
 resource cosmosDbContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers@2021-04-15' = {
-  parent: cosmosDbDatabase
-  name: containerName
+  name: '${accountName}/${databaseName}/${containerName}'
   properties: {
     resource: {
       id: containerName
@@ -65,3 +66,7 @@ resource cosmosDbContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/c
       }
     }
   }
+  dependsOn: [
+    cosmosDbDatabase
+  ]
+}
